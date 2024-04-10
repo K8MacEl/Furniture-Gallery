@@ -1,0 +1,18 @@
+{% extends 'base.html %}
+{% block content %}
+
+{% for furniture in furniture %}
+<h1>THIS IS FURNITURE INDEX PAGE</h1>
+<div class="card">
+    <a href="{% url 'detail' furniture.id %}">
+        <div class="card-content">
+            <span class="card-title">{{ furniture.name }}</span>
+            <p>{{ furniture.description }}</p>
+            <p>{{ furniture.price }}</p>
+            <p>{{ furniture.category }}</p>
+        </div>
+    </a>
+</div>
+{% endfor %}
+
+{% endblock %}
