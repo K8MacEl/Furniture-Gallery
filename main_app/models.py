@@ -5,16 +5,16 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 CATEGORIES = (
-    ('bed', 'Bed'),
-    ('chair,' 'Chair'),
-    ('sofa', 'Sofa'),
-    ('table', 'Table')
+    ( "bed", "Bed"),
+    ("chair", "Chair"),
+    ("sofa", "Sofa"),
+    ("table", "Table")
 )
 
 class Furniture_Item(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    price = models.DecimalField()
+    price = models.DecimalField(decimal_places=2,max_digits=10)
     category = models.CharField(choices=CATEGORIES)
 
     def __str__(self):
@@ -29,7 +29,7 @@ class Photo(models.Model):
     
 class Cart(models.Model):
     furniture_item = models.ManyToManyField(Furniture_Item)
-    price = models.DecimalField()
+    price = models.DecimalField(decimal_places=2,max_digits=10)
     amount = models.IntegerField()
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 

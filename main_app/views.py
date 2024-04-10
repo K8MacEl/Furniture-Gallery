@@ -86,3 +86,4 @@ def furniture_detail(request, furniture_id):
  
  ##----remove_from_cart----##
  ###----AAU I want to remove furniture from from---##
+ 
