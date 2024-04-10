@@ -1,8 +1,10 @@
 
 body {
+
 	display: flex;
 	min-height: 100vh;
 	flex-direction: column;
+    background-color: "#f3f4f6";
   }
   
   main {
@@ -18,3 +20,10 @@ body {
   .datepicker-date-display {
 	background-color: #1b5e20
   }
+
+  a {
+    color: black;
+  }
+  /* .nav-wrapper{
+    height: 100px !important;
+  } */
