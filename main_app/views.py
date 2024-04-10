@@ -43,11 +43,11 @@ def signup(request):
 
 #----WILL NEED TO ADD FILTER METHOD HERE----#
 def furniture_index(request):
-	furniture = Furniture_Item.objects.filter(category=request.category)
+	# furniture = Furniture_Item.objects.filter(category=request.category)
 	return render(request, 'furniture/index.html', {
 # user filter method like we did in the cat but category
 # when click on the link use query string of category for index
-		'furniture': furniture
+		'furniture': Furniture_Item
 	})
 	
 def furniture_detail(request, furniture_id):
