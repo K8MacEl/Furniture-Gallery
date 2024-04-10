@@ -11,10 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-<<<<<<< HEAD
-# Create your views here.
 
-=======
 import uuid
 import boto3
 import os
@@ -46,11 +43,11 @@ def signup(request):
 
 #----WILL NEED TO ADD FILTER METHOD HERE----#
 def furniture_index(request):
-	furniture = Furniture_Item.objects.filter(category=request.category)
+	# furniture = Furniture_Item.objects.filter(category=request.category)
 	return render(request, 'furniture/index.html', {
 # user filter method like we did in the cat but category
 # when click on the link use query string of category for index
-		'furniture': furniture
+		'furniture': Furniture_Item
 	})
 	
 def furniture_detail(request, furniture_id):
@@ -70,6 +67,7 @@ def furniture_detail(request, furniture_id):
  
  ##--AAU (ADMIN ONLY) I want to edit furniture
 
+
 # class FurnitureUpdate(LoginRequiredMixin, UpdateView):
 #     model = Furniture_Item
 #     fields = ['name', 'description', 'price', 'category'], 
@@ -88,5 +86,3 @@ def furniture_detail(request, furniture_id):
  
  ##----remove_from_cart----##
  ###----AAU I want to remove furniture from from---##
- 
->>>>>>> main
