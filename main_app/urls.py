@@ -6,5 +6,4 @@ urlpatterns = [
 
     path('furniture/', views.furniture_index, name="index"),
     path('accounts/signup/', views.signup, name='signup'),
->>>>>>> main
 ]
