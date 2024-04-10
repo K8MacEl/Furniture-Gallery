@@ -11,6 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+
 import uuid
 import boto3
 import os
@@ -65,6 +66,7 @@ def furniture_detail(request, furniture_id):
  ##---edit/update furniture---##
  
  ##--AAU (ADMIN ONLY) I want to edit furniture
+
 
 # class FurnitureUpdate(LoginRequiredMixin, UpdateView):
 #     model = Furniture_Item
