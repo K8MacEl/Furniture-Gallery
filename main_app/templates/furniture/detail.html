@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
-{% block detail %}
-
+{% block content %}
+<h1>This is the detail page</h1>
 <div class="row">
     <div class="col s6">
         <img class="responsive-img card-panel" srv="{{ furniture_item.photo.url }}">
@@ -19,11 +19,10 @@
                     <button type="submit" class="btn">Add To Cart</button>
                 </form>
                 <p>{{ furniture_item.category }}</p>
-                <p>{{ furniture_item.seller }}</p>
             </div>
         </div>
     </div>
 </div>
     
-{% endblock detail %}
+{% endblock content %}
     

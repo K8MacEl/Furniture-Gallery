@@ -62,19 +62,25 @@ def furniture_index(request):
 		# res.render('cats/index', {'cats': cats})
 	})
 	
-def furniture_detail(request, furniture_id):
-	furniture = Furniture_Item.objects.get(id=furniture_id)
+def furniture_detail(request, furniture_item_id):
+	furniture = Furniture_Item.objects.get(id=furniture_item_id)
+	return render(request, 'furniture/detail.html', {
+		'furniture_item': furniture,
+	})
  
  ##---create furniture----####
  
  ## AAU (ADMIN ONLY) I want to create new furniture item
-class Furniture_Item_Create (CreateView):
+
+
+class Furniture_Item_Create(CreateView):
 	model = Furniture_Item
-	fields = ['name', 'description', 'price', 'category'],
-	def form_valid(self, form):
-		#uncomment this when signup is fully working 
-		form.instance.user = self.request.user
-		return super().form_valid(form)
+	fields = ['name', 'description', 'price', 'category']
+
+	# def form_valid(self, form):
+	# 	#uncomment this when signup is fully working 
+	# 	form.instance.user = self.request.user
+	# 	return super().form_valid(form)
 
 	
  
