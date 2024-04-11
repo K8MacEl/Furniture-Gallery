@@ -18,8 +18,15 @@ import os
 #---confirm with Dean this model is done then migrate
 from .models import Furniture_Item
 
+# furniture = [
+# 	{'name':'Blue chair', 'description': 'Blue LazyBoy', 'price':'500.00', 'category':'chair'},
+# 	{'name':'Dining table', 'description': 'Oak Dining Table', 'price':'1000.00', 'category':'table'},
+#  	{'name':'Canopy Bed', 'description': 'Black metal canopy bed', 'price':'250.00', 'category':'bed'},
+# 	{'name':'Sectional', 'description': 'Leather Sectional', 'price':'1500,00', 'category':'sofa'}
+# ]
+
 def home(request):
-	furniture = Furniture_Item.objects.all()
+	# furniture = furniture.objects.all()
 
 	return render(request, 'home.html')
 
@@ -43,11 +50,16 @@ def signup(request):
 
 #----WILL NEED TO ADD FILTER METHOD HERE----#
 def furniture_index(request):
-	# furniture = Furniture_Item.objects.filter(category=request.category)
+
+	# tell the model to find all the rows in the cats table!
+	# cats = Cat.objects.all()
+	# Only grab the logged in users cats
+	furniture = Furniture_Item.objects.all()
 	return render(request, 'furniture/index.html', {
-# user filter method like we did in the cat but category
-# when click on the link use query string of category for index
-		'furniture': Furniture_Item
+		'furniture': furniture
+		# 'cats' becomes a variable name in 'cats/index.html'
+		# just like express
+		# res.render('cats/index', {'cats': cats})
 	})
 	
 def furniture_detail(request, furniture_id):
@@ -56,12 +68,13 @@ def furniture_detail(request, furniture_id):
  ##---create furniture----####
  
  ## AAU (ADMIN ONLY) I want to create new furniture item
-# class FurnitureCreate(LoginRequiredMixin, CreateView):
-# 	model = Furniture_Item
-# 	fields = ['name', 'description', 'price', 'category'],
-# 	def form_valid(self, form):
-# 		form.instance.user = self.request.user
-# 		return super().form_valid(form)
+class Furniture_Item_Create(LoginRequiredMixin, CreateView):
+	model = Furniture_Item
+	fields = ['name', 'description', 'price', 'category'],
+	def form_valid(self, form):
+		#uncomment this when signup is fully working 
+		# form.instance.user = self.request.user
+		return super().form_valid(form)
  
  ##---edit/update furniture---##
  
