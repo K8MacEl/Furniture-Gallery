@@ -16,7 +16,7 @@ class Furniture_Item(models.Model):
     description = models.CharField(max_length=200)
     price = models.DecimalField(decimal_places=2,max_digits=10)
     category = models.CharField(choices=CATEGORIES)
-
+    
     def __str__(self):
         return self.name
     
