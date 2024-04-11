@@ -20,6 +20,12 @@
                 </form>
                 <p>{{ furniture_item.category }}</p>
             </div>
+            <form action="{% url 'add_photo' furniture_item.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+                {% csrf_token %}
+                <input type="file" name="photo-file">
+                <br><br>
+                <button type="submit" class="btn">Upload Photo</button>
+            </form>
         </div>
     </div>
 </div>
