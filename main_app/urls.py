@@ -11,5 +11,7 @@ urlpatterns = [
     path('furniture/create/', views.Furniture_Item_Create.as_view(), name='furniture_create'),
 
     path('furniture/<int:furniture_item_id>/',views.furniture_detail, name='detail'),
+
+    path('furniture/<int:furniture_item_id>/create/', views.add_photo, name='add_photo'),
     
 ]

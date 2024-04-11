@@ -16,7 +16,7 @@ import uuid
 import boto3
 import os
 #---confirm with Dean this model is done then migrate
-from .models import Furniture_Item
+from .models import Furniture_Item, Photo, Cart
 
 # furniture = [
 # 	{'name':'Blue chair', 'description': 'Blue LazyBoy', 'price':'500.00', 'category':'chair'},
@@ -82,7 +82,25 @@ class Furniture_Item_Create(CreateView):
 	# 	form.instance.user = self.request.user
 	# 	return super().form_valid(form)
 
-	
+def add_photo(request, furniture_item_id):
+    # photo-file will be the "name" attribute on the <input type="file">
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        # need a unique "key" for S3 / needs image file extension too
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        # just in case something goes wrong
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            # build the full url string
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            # we can assign to furniture_id or cat (if you have a furniture object)
+            Photo.objects.create(url=url, furniture_item_id=furniture_item_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
+    return redirect('detail', furniture_item_id=furniture_item_id)
  
  ##---edit/update furniture---##
  
