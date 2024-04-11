@@ -22,7 +22,7 @@ class Furniture_Item(models.Model):
     
     def get_absolute_url(self):
        
-        return reverse("detail", kwargs={"furniture_id": self.id})
+        return reverse("detail", kwargs={"furniture_item_id": self.id})
 
 class Photo(models.Model):
     url = models.CharField(max_length=200)
