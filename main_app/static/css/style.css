@@ -1,29 +1,80 @@
 
 body {
 
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
-    background-color: "#f3f4f6";
+    background-color: #f3f4f6;
+    margin: 0;
   }
   
-  main {
-	flex: 1 0 auto;
-  }
-  
-  /* this is a nice example class for a sticky footer */
-  footer.page-footer {
-	padding-top: 0;
-	text-align: right;
-  }
+nav {
+    color:black;
+    border: 1px solid white;
+    -webkit-box-shadow: -6px 11px 15px -12px rgba(0,0,0,0.75);
+    -moz-box-shadow: -6px 11px 15px -12px rgba(0,0,0,0.75);
+    box-shadow: -6px 11px 15px -12px rgba(0,0,0,0.75);;
+    display: flex;
+    background-color: white;
+    font-weight: bold;
+    
+}
 
-  .datepicker-date-display {
-	background-color: #1b5e20
-  }
+nav ul li a:hover {
+    color: blue;
+}
 
-  a {
+nav ul {
+    display: flex;
+    list-style-type: none;
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+nav ul li {
+    margin: 15px;
+}
+
+a {
+    text-decoration: none;
     color: black;
-  }
-  /* .nav-wrapper{
-    height: 100px !important;
-  } */
+
+}
+
+.sidenav {
+    list-style-type: none;
+    width: 300px;
+    padding: 0px;;
+    margin-top: 100px;
+}
+
+.sidenav li {
+    margin: 0.2px;
+    border: 0.5px solid;
+    padding: 9px;
+    border-radius: 0.5px;
+  
+
+   
+    text-align: center;
+}
+
+
+
+.sidenav li a {
+    display: block;
+    border-radius: 0.5px;
+
+
+}
+
+.container {
+    display: flex;
+}
+
+.sidenav li:hover {
+    background-color: #eaebed;
+    
+}
+
+
+
+
+
