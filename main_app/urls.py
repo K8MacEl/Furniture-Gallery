@@ -7,6 +7,8 @@ urlpatterns = [
     path('furniture/', views.furniture_index, name="index"),
     
     path('accounts/signup/', views.signup, name='signup'),
+    
+    path('furniture/create/', views.Furniture_Item_Create.as_view(), name='furniture_create'),
 
     path('furniture/<int:furniture_item_id>/',views.furniture_detail, name='detail'),
     
