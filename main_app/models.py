@@ -34,6 +34,6 @@ class Photo(models.Model):
     
 class Cart(models.Model):
     furniture_item = models.ManyToManyField(Furniture_Item, blank=True, null=True)
-    # amount = models.IntegerField(blank=True, null=True)
+    quantity = models.IntegerField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
