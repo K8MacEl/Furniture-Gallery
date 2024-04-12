@@ -1,0 +1,13 @@
+{% block content %}
+  <h1>Delete Item</h1>
+
+  <h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
+
+  <!-- django has a method override built in, remember browser can only send
+  get/post requsts from forms, django will handle changing it to a delete -->
+  <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes - Delete!" class="btn">
+    <a href="{% url 'detail' furniture_item.id %}">Cancel</a>
+  </form>
+{% endblock %}

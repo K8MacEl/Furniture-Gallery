@@ -81,6 +81,12 @@ class Furniture_Item_Create(CreateView):
 	# 	#uncomment this when signup is fully working 
 	# 	form.instance.user = self.request.user
 	# 	return super().form_valid(form)
+ 
+class Furniture_Item_Delete(DeleteView):
+	model = Furniture_Item 
+	# define the success_url here because the def get_absolute_url in the models.property
+	# redirects to a detail page which doesn't make sense since we deleted it
+	success_url = '/furniture' # redirect to cats_index path
 
 def add_photo(request, furniture_item_id):
     # photo-file will be the "name" attribute on the <input type="file">
