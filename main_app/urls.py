@@ -15,4 +15,12 @@ urlpatterns = [
     path('furniture/<int:furniture_item_id>/create/', views.add_photo, name='add_photo'),
     
     path('furniture/<int:pk>/delete/', views.Furniture_Item_Delete.as_view(), name='furniture_delete'),
+
+    path('furniture/<int:user_id>/cart', views.CartCreate.as_view(), name='cart_create'),
+
+    path('furniture/<int:user_id>/cart', views.CartUpdate.as_view(), name='cart_update'),
+
+    path('furniture/<int:user_id>/cart', views.CartList.as_view(), name='cart_list'),
+
+
 ]

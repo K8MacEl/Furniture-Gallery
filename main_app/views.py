@@ -128,6 +128,21 @@ def add_photo(request, furniture_item_id):
   
  ###-----add_to_cart----###
  ##---AAU I want to add furninture to cart---## 
+
+class CartCreate(CreateView):
+    model = Cart
+    fields = '__all__'
+
+
+class CartUpdate(UpdateView):
+    model = Cart
+    fields = '__all__'
+	
+class CartList(ListView):
+    model = Cart
+    fields = '__all__'
+	
+	
  
  ##----remove_from_cart----##
  ###----AAU I want to remove furniture from from---##
