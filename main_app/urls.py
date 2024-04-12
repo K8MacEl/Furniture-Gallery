@@ -20,7 +20,7 @@ urlpatterns = [
 
     path('furniture/<int:user_id>/cart', views.CartUpdate.as_view(), name='cart_update'),
 
-    path('furniture/<int:user_id>/cart', views.CartList.as_view(), name='cart_list'),
+    path('cart/', views.CartList.as_view(), name='cart_list'),
 
 
 ]

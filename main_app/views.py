@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from allauth.account.signals import user_logged_in
+from django.dispatch.dispatcher import receiver
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DeleteView
@@ -24,6 +26,9 @@ from .models import Furniture_Item, Photo, Cart
 #  	{'name':'Canopy Bed', 'description': 'Black metal canopy bed', 'price':'250.00', 'category':'bed'},
 # 	{'name':'Sectional', 'description': 'Leather Sectional', 'price':'1500,00', 'category':'sofa'}
 # ]
+@receiver(user_logged_in, dispatch_uid="unique")
+def user_logged_in_(request, user, **kwargs):
+    print (request.user)
 
 def home(request):
 	# furniture = furniture.objects.all()
@@ -89,24 +94,24 @@ class Furniture_Item_Delete(DeleteView):
 	success_url = '/furniture' # redirect to cats_index path
 
 def add_photo(request, furniture_item_id):
-    # photo-file will be the "name" attribute on the <input type="file">
-    photo_file = request.FILES.get('photo-file', None)
-    if photo_file:
-        s3 = boto3.client('s3')
-        # need a unique "key" for S3 / needs image file extension too
-        key = "furniture_gallery/" + uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
-        # just in case something goes wrong
-        try:
-            bucket = os.environ['S3_BUCKET']
-            s3.upload_fileobj(photo_file, bucket, key)
-            # build the full url string
-            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-            # we can assign to furniture_id or cat (if you have a furniture object)
-            Photo.objects.create(url=url, furniture_item_id=furniture_item_id)
-        except Exception as e:
-            print('An error occurred uploading file to S3')
-            print(e)
-    return redirect('detail', furniture_item_id=furniture_item_id)
+	# photo-file will be the "name" attribute on the <input type="file">
+	photo_file = request.FILES.get('photo-file', None)
+	if photo_file:
+		s3 = boto3.client('s3')
+		# need a unique "key" for S3 / needs image file extension too
+		key = "furniture_gallery/" + uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+		# just in case something goes wrong
+		try:
+			bucket = os.environ['S3_BUCKET']
+			s3.upload_fileobj(photo_file, bucket, key)
+			# build the full url string
+			url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+			# we can assign to furniture_id or cat (if you have a furniture object)
+			Photo.objects.create(url=url, furniture_item_id=furniture_item_id)
+		except Exception as e:
+			print('An error occurred uploading file to S3')
+			print(e)
+	return redirect('detail', furniture_item_id=furniture_item_id)
  
  ##---edit/update furniture---##
  
@@ -130,17 +135,17 @@ def add_photo(request, furniture_item_id):
  ##---AAU I want to add furninture to cart---## 
 
 class CartCreate(CreateView):
-    model = Cart
-    fields = '__all__'
+	model = Cart
+	fields = '__all__'
 
 
 class CartUpdate(UpdateView):
-    model = Cart
-    fields = '__all__'
+	model = Cart
+	fields = '__all__'
 	
 class CartList(ListView):
-    model = Cart
-    fields = '__all__'
+	model = Cart
+	fields = '__all__'
 	
 	
  
