@@ -9,7 +9,9 @@
   <title>Furniture Gallery</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
   <script>
   </script>
 </head>
@@ -24,9 +26,11 @@
       <li>
         <a href="sass.html"><span class="black-text">Admin</span></a>
       </li>
+      {% if user %}
       <li>
-        <a href="badges.html"><span class="black-text">Cart</span></a>
+        <a href="#"><i class="material-icons">shopping_cart</i><span class="shopping_cart"></span></a>
       </li>
+      {% endif %}
       <li>
         <a href="collapsible.html"><span class="black-text">Logout</span></a>
       </li>
