@@ -28,7 +28,7 @@ from .models import Furniture_Item, Photo, Cart
 # ]
 @receiver(user_logged_in, dispatch_uid="unique")
 def user_logged_in_(request, user, **kwargs):
-    print (request.user)
+    print(request.user)
 
 def home(request):
 	# furniture = furniture.objects.all()
