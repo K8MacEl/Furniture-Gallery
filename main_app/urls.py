@@ -14,4 +14,5 @@ urlpatterns = [
 
     path('furniture/<int:furniture_item_id>/create/', views.add_photo, name='add_photo'),
     
+    path('furniture/<int:pk>/delete/', views.Furniture_Item_Delete.as_view(), name='furniture_delete'),
 ]

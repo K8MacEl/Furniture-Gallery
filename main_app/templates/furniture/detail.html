@@ -9,26 +9,33 @@
     <div class="col s6">
         <div class="card">
             <div class="card-content">
+                {% for photo in furniture_item.photo_set.all %}
+                <img style="width: 250px" class="responsive-img card-panel" src="{{photo.url}}">
+                {% empty %}
+                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+                {% endfor %}
                 <span class="card-title">{{ furniture_item.name }}</span>
                 <p>{{ furniture_item.description }}</p>
                 <h3>{{ furniture_item.price }}</h3>
-                <form action="{url 'add_to_cart' furniture_item.id user.id}" 
-                    enctype="multipart/form-data"
-                    method="POST" class="card-panel">
+                <form action="{url 'add_to_cart' furniture_item.id user.id}" enctype="multipart/form-data" method="POST"
+                    class="card-panel">
                     {% csrf_token %}
                     <button type="submit" class="btn">Add To Cart</button>
                 </form>
                 <p>{{ furniture_item.category }}</p>
             </div>
-            <form action="{% url 'add_photo' furniture_item.id %}" enctype="multipart/form-data" method="POST" class="card-panel">
+            <form action="{% url 'add_photo' furniture_item.id %}" enctype="multipart/form-data" method="POST"
+                class="card-panel">
                 {% csrf_token %}
                 <input type="file" name="photo-file">
                 <br><br>
                 <button type="submit" class="btn">Upload Photo</button>
             </form>
+            <form action="{% url 'furniture_delete' furniture_item.id %}">
+                <button type="submit" class="btn">DELETE ITEM</button>
+            </form>
         </div>
     </div>
 </div>
-    
+
 {% endblock content %}
-    
