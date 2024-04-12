@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 CATEGORIES = (
@@ -32,8 +33,7 @@ class Photo(models.Model):
         return f"Photo for furniture_item_id: {self.furniture_item_id} @{self.url}"
     
 class Cart(models.Model):
-    furniture_item = models.ManyToManyField(Furniture_Item)
-    price = models.DecimalField(decimal_places=2,max_digits=10)
-    amount = models.IntegerField()
+    furniture_item = models.ManyToManyField(Furniture_Item, blank=True, null=True)
+    # amount = models.IntegerField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 

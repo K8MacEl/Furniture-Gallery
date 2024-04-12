@@ -16,11 +16,9 @@ urlpatterns = [
     
     path('furniture/<int:pk>/delete/', views.Furniture_Item_Delete.as_view(), name='furniture_delete'),
 
-    path('furniture/<int:user_id>/cart', views.CartCreate.as_view(), name='cart_create'),
-
     path('furniture/<int:user_id>/cart', views.CartUpdate.as_view(), name='cart_update'),
 
-    path('furniture/<int:user_id>/cart', views.CartList.as_view(), name='cart_list'),
+    path('cart/', views.CartList.as_view(), name='cart_list'),
 
 
 ]
