@@ -38,14 +38,14 @@ a {
 
 }
 
-.sidenav {
+.sidenavbar {
     list-style-type: none;
     width: 300px;
     padding: 0px;;
     margin-top: 100px;
 }
 
-.sidenav li {
+.sidenavbar li {
     margin: 0.2px;
     border: 0.5px solid;
     padding: 9px;
@@ -58,7 +58,7 @@ a {
 
 
 
-.sidenav li a {
+.sidenavbar li a {
     display: block;
     border-radius: 0.5px;
 
@@ -69,12 +69,17 @@ a {
     display: flex;
 }
 
-.sidenav li:hover {
+.sidenavbar li:hover {
     background-color: #eaebed;
     
 }
 
 
+/* form p {
+    border: 10px solid red !important;
+    height: 100px;
+    all: unset;
+} */
 
 
 
