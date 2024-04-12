@@ -28,7 +28,7 @@ from .models import Furniture_Item, Photo, Cart
 # ]
 @receiver(user_logged_in, dispatch_uid="unique")
 def user_logged_in_(request, user, **kwargs):
-    print(request.user)
+	print(request.user)
 
 def home(request):
 	# furniture = furniture.objects.all()
@@ -112,27 +112,7 @@ def add_photo(request, furniture_item_id):
 			print('An error occurred uploading file to S3')
 			print(e)
 	return redirect('detail', furniture_item_id=furniture_item_id)
- 
- ##---edit/update furniture---##
- 
- ##--AAU (ADMIN ONLY) I want to edit furniture
 
-
-# class FurnitureUpdate(LoginRequiredMixin, UpdateView):
-#     model = Furniture_Item
-#     fields = ['name', 'description', 'price', 'category'], 
- ##---delete furniture---##
- 
- ##--AAU (ADMIN ONLY) I want to delete furniture
- 
-# class FurnitureDelete(LoginRequiredMixin, DeleteView):
-#     model = Furniture_Item
-#     success_url = '/furniture' # redirect to furniture_index path 
- 
-  ##-----remaining functions to create here-----##
-  
- ###-----add_to_cart----###
- ##---AAU I want to add furninture to cart---## 
 
 class CartCreate(CreateView):
 	model = Cart
@@ -149,6 +129,29 @@ class CartList(ListView):
 	
 	
  
- ##----remove_from_cart----##
- ###----AAU I want to remove furniture from from---##
- 
+def disassoc_item(request, cart_id, furniture_item_id):
+	cart = Cart.objects.get(id=cart_id)
+	cart.furniture.remove(furniture_item_id)
+	return redirect('detail',cart_id=cart_id)
+
+
+
+
+
+# we want to"
+# 1 find cart by the user similar to cart = Cart.objects.get(id=cart_id)
+#3 if it finds the object:
+#4 if we found it, now we need to check to see if the item is in the cart
+#5 if item is in the cart then we want to increase the quantity
+#6 if the item is not in the cart, we add the item to the cart make quanity +1
+#7 then we respond to redirect back to the detail page
+def assoc_item(request, furniture_item_id):
+	cart = Cart.objects.get(user=request.user)
+	print(cart.__dict__, "This is request for assoc_item" )
+	# if cart.exists():
+	# 	print(cart, "this is cart")
+	# if cart has something call .save
+	
+ 	# cart = Cart.objects.get(id=cart_id)
+	# cart.furniture.add(furniture_item_id)# adding a row to our through table the one with 2 foriegn keys in sql
+	return redirect('cart_list')

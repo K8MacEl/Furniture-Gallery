@@ -17,7 +17,7 @@
                 <span class="card-title">{{ furniture_item.name }}</span>
                 <p>{{ furniture_item.description }}</p>
                 <h3>{{ furniture_item.price }}</h3>
-                <form action="{url 'add_to_cart' furniture_item.id user.id}" enctype="multipart/form-data" method="POST"
+                <form action="{% url 'assoc_item' furniture_item.id %}" enctype="multipart/form-data" method="POST"
                     class="card-panel">
                     {% csrf_token %}
                     <button type="submit" class="btn">Add To Cart</button>

@@ -16,9 +16,11 @@ urlpatterns = [
     
     path('furniture/<int:pk>/delete/', views.Furniture_Item_Delete.as_view(), name='furniture_delete'),
 
-    path('furniture/<int:user_id>/cart', views.CartUpdate.as_view(), name='cart_update'),
-
     path('cart/', views.CartList.as_view(), name='cart_list'),
+    
+    path('cart/assoc_item/<int:furniture_item_id>/', views.assoc_item, name='assoc_item'),
+    
+    path('cart/<int:cart_id>/disassoc_item/<int:furniture_item_id>/', views.disassoc_item, name='disassoc_item'),
 
 
 ]
