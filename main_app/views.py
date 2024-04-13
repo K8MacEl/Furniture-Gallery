@@ -4,6 +4,7 @@ from django.dispatch.dispatcher import receiver
 
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DeleteView
+from django.contrib import messages
 
 # Login
 from django.contrib.auth import login
@@ -148,10 +149,18 @@ def disassoc_item(request, cart_id, furniture_item_id):
 def assoc_item(request, furniture_item_id):
 	cart = Cart.objects.get(user=request.user)
 	print(cart.__dict__, "This is request for assoc_item" )
-	# if cart.exists():
-	# 	print(cart, "this is cart")
-	# if cart has something call .save
-	
+	if cart:
+		print(cart, "this is cart")
+		cart.furniture_item.add(furniture_item_id)
+		if cart.quantity == None:
+			cart.quantity = 1
+			cart.save()
+			messages.success(request, "Item added to your cart")
+		elif cart.quantity != None:
+			cart.quantity += 1
+	#if cart has something call .save
+	else:
+		Cart.objects.create(user=request.user, furniture_item=furniture_item_id)
  	# cart = Cart.objects.get(id=cart_id)
 	# cart.furniture.add(furniture_item_id)# adding a row to our through table the one with 2 foriegn keys in sql
 	return redirect('cart_list')
