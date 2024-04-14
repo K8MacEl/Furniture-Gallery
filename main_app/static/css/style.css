@@ -14,11 +14,12 @@ nav {
     display: flex;
     background-color: white;
     font-weight: bold;
-    
+    height: 90px; 
 }
 
 nav ul li a:hover {
     color: blue;
+    background-color: white;
 }
 
 nav ul {
@@ -26,16 +27,16 @@ nav ul {
     list-style-type: none;
     margin-left: auto;
     padding-right: 20px;
+    color: black;
 }
 
 nav ul li {
     margin: 15px;
 }
 
-a {
+nav ul a {
     text-decoration: none;
     color: black;
-
 }
 
 .sidenavbar {
@@ -47,39 +48,49 @@ a {
 
 .sidenavbar li {
     margin: 0.2px;
-    border: 0.5px solid;
+    border: 0.5px solid #AEAEB0;
     padding: 9px;
-    border-radius: 0.5px;
-  
-
-   
+    border-radius: 10px;
     text-align: center;
 }
 
-
-
 .sidenavbar li a {
     display: block;
-    border-radius: 0.5px;
-
-
+    border-radius: 2px;
+    color: black;
+    font-size: medium;
 }
 
-.container {
+.sideContainer {
     display: flex;
 }
 
 .sidenavbar li:hover {
-    background-color: #eaebed;
-    
+    background-color: #eaebed;  
 }
 
+.btn {
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    border: none;
+    display: contents;
+    font-weight: bold;
+}
 
-/* form p {
-    border: 10px solid red !important;
-    height: 100px;
-    all: unset;
-} */
+.btn:hover {
+    background-color: white;
+    color: blue;
+}
 
+.homepic img {
+  
+    width: 100%;
+    margin-top: 5px;
+   
+}
 
-
+.submit_btn {
+    background-color: green;
+    color: white
+}

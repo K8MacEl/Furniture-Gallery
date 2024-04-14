@@ -17,30 +17,30 @@
     />
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 
-    <script></script>
   </head>
-
   <body>
     <nav>
-      <a href="#" class="brand-logo"
-        ><img src="https://i.imgur.com/YWEppWG.png" width="245px"
+      <a href="#" 
+        ><img src="https://i.imgur.com/nhLnyn2.png" width="230px"
       /></a>
-      <ul class="top-nav">
+      <ul>
         <li>
           <a href="{% url 'furniture_create' %}"
-            ><span class="black-text">Add Furniture</span></a
+            ><span>Add Furniture</span></a
           >
         </li>
         <li>
-          <a href="sass.html"><span class="black-text">Admin</span></a>
+          <a href="#"><span>Admin</span></a>
         </li>
         {% if user.is_authenticated %}
         <li>
-          <a href="{% url 'cart_list' %}"
-            ><i class="material-icons">shopping_cart</i
-            ><span class="shopping_cart"></span
-          ></a>
-        </li>
+          <a href="{% url 'cart_list' %}">
+            <i class="material-icons">shopping_cart</i
+            ><span class="shopping_cart"></span></a>
+        </li> 
+        
+
+
         <li>
           <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
@@ -48,16 +48,18 @@
           </form>
         </li>
         {% else %}
+        <li>
         <form method="post" action="{% url 'login' %}">
             {% csrf_token %}
             <button type="submit" class="btn">login</button>
           </form>
+        </li>
 
         {% endif %}
       </ul>
     </nav>
 
-    <main class="container">
+    <main class="sideContainer">
       <ul class="sidenavbar">
         <li><a href="">Bed</a></li>
         <li><a href="">Table</a></li>
