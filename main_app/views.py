@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from allauth.account.signals import user_logged_in
 from django.dispatch.dispatcher import receiver
-
+from django.forms.models import model_to_dict
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DeleteView
 from django.contrib import messages
@@ -126,9 +126,13 @@ class CartUpdate(UpdateView):
 	
 class CartList(ListView):
 	model = Cart
-	fields = '__all__'
-	
-	
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		cart_list = context['cart_list']
+		for cart in cart_list:
+			print(model_to_dict(cart))
+		return context
  
 def disassoc_item(request, cart_id, furniture_item_id):
 	cart = Cart.objects.get(id=cart_id)
@@ -155,9 +159,11 @@ def assoc_item(request, furniture_item_id):
 		if cart.quantity == None:
 			cart.quantity = 1
 			cart.save()
-			messages.success(request, "Item added to your cart")
+			print(request, "Item added to your cart")
 		elif cart.quantity != None:
 			cart.quantity += 1
+			cart.save()
+			print(cart.quantity)
 	#if cart has something call .save
 	else:
 		Cart.objects.create(user=request.user, furniture_item=furniture_item_id)
