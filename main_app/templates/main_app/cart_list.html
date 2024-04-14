@@ -3,14 +3,24 @@
 
 {% block content %}
 
-<h1>Cart</h1>
+<h1>Carts</h1>
 
 <hr>
 <div class="row">
   <div class="col s6">
     <h3>Shopping Cart</h3>
-    {% if cart.quantity.count %}
-    {% for furniture_item in cart.all %}
+    {% for cart in cart_list %}
+      <p>{{ cart.quantity }}</p>
+      <p>{{ cart.user }}</p>
+      {% for item in cart.furniture_item.all %}
+        <p>{{ item.name }}</p>
+        <p>{{ item.description }}</p>
+        <p>${{ item.price }}</p>
+      {% endfor %}
+    {% endfor %}
+    <!-- {% if cart.quantity.count %} -->
+    
+    {% for furniture_item in cart.furniture_item.all %}
     <div class="card">
       <div class="card-content">
         <span class="card-title">
@@ -24,9 +34,9 @@
       </div>
     </div>
     {% endfor %}
-    {% else %}
+    <!-- {% else %}
     <h5>No items in cart</h5>
-    {% endif %}  
+    {% endif %}   -->
   </div>
   <!-- Available toys will come after this line -->
     
