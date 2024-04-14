@@ -16,7 +16,7 @@ urlpatterns = [
     
     path('furniture/<int:pk>/delete/', views.Furniture_Item_Delete.as_view(), name='furniture_delete'),
 
-    path('cart/', views.CartList.as_view(), name='cart_list'),
+    path('cart/', views.cart_list, name='cart_list'),
     
     path('cart/assoc_item/<int:furniture_item_id>/', views.assoc_item, name='assoc_item'),
     

@@ -5,12 +5,14 @@
 
 {% for furniture_item in furniture  %}
   <div class="card">
-    <div class="card-content">
-      <span class="card-title">{{ furniture_item.name }}</span>
-      <p>Description: {{ furniture_item.description }}</p>
-      <p>Price: $ {{ furniture_item.price }}</p>
-      <p>Category: {{ furniture_item.category }}</p>
-    </div>
+    <a href="{% url 'detail' furniture_item.id %}">
+      <div class="card-content">
+        <span class="card-title">{{ furniture_item.name }}</span>
+        <p>Description: {{ furniture_item.description }}</p>
+        <p>Price: $ {{ furniture_item.price }}</p>
+        <p>Category: {{ furniture_item.category }}</p>
+      </div>
+    </a>
   </div>
 {% endfor %}
 
