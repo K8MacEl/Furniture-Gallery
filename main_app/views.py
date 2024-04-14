@@ -124,20 +124,25 @@ class CartUpdate(UpdateView):
 	model = Cart
 	fields = '__all__'
 	
-class CartList(ListView):
-	model = Cart
+# class CartList(ListView):
+# 	model = Cart
 
-	def get_context_data(self, **kwargs):
-		context = super().get_context_data(**kwargs)
-		cart_list = context['cart_list']
-		for cart in cart_list:
-			print(model_to_dict(cart))
-		return context
- 
+# 	def get_context_data(self, **kwargs):
+# 		context = super().get_context_data(**kwargs)
+# 		cart_list = context['cart_list']
+# 		for cart in cart_list:
+# 			print(model_to_dict(cart))
+# 		return context
+	
+def cart_list(request):
+	cart = Cart.objects.get(user=request.user)
+	print('cart: ', cart)
+	return render(request, 'main_app/cart_list.html', {'cart': cart})
+
 def disassoc_item(request, cart_id, furniture_item_id):
 	cart = Cart.objects.get(id=cart_id)
-	cart.furniture.remove(furniture_item_id)
-	return redirect('detail',cart_id=cart_id)
+	cart.furniture_item.remove(furniture_item_id)
+	return redirect('cart_list')
 
 
 
