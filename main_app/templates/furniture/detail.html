@@ -2,40 +2,38 @@
 
 {% block content %}
 
-<div class="row">
-    <div class="col s6">
-        <img class="responsive-img card-panel" srv="{{ furniture_item.photo.url }}">
-    </div>
-    <div class="col s6">
-        <div class="card">
-            <div class="card-content">
-                {% for photo in furniture_item.photo_set.all %}
-                <img style="width: 250px" class="responsive-img card-panel" src="{{photo.url}}">
-                {% empty %}
-                <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-                {% endfor %}
-                <span class="card-title">{{ furniture_item.name }}</span>
-                <p>{{ furniture_item.description }}</p>
-                <h3>{{ furniture_item.price }}</h3>
-                <form action="{% url 'assoc_item' furniture_item.id %}" enctype="multipart/form-data" method="POST"
-                    class="card-panel">
-                    {% csrf_token %}
-                    <button type="submit" class="btn">Add To Cart</button>
-                </form>
-                <p>{{ furniture_item.category }}</p>
-            </div>
-            <form action="{% url 'add_photo' furniture_item.id %}" enctype="multipart/form-data" method="POST"
-                class="card-panel">
-                {% csrf_token %}
-                <input type="file" name="photo-file">
-                <br><br>
-                <button type="submit" class="btn">Upload Photo</button>
-            </form>
-            <form action="{% url 'furniture_delete' furniture_item.id %}">
-                <button type="submit" class="btn">DELETE ITEM</button>
-            </form>
-        </div>
+
+<div>
+    {% for photo in furniture_item.photo_set.all %}
+    <img class="responsive-image" src="{{photo.url}}">
+    {% empty %}
+    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    {% endfor %}
+</div>
+<div class="detail-card">
+    <div class="card-content">
+        <h3><strong><span>{{ furniture_item.name }}</span></strong></h3>
+        <p>
+        <h5><strong>Description</strong></h5> {{ furniture_item.description }}</p>
+        <h5>${{ furniture_item.price }}</h5>
+        <form action="{% url 'assoc_item' furniture_item.id %}" enctype="multipart/form-data" method="POST"
+            >
+            {% csrf_token %}
+            <button type="submit" class="cart-btn">Add To Cart</button>
+        </form>
+        <p><strong>Category</strong> {{ furniture_item.category }}</p>
+        <form action="{% url 'add_photo' furniture_item.id %}" enctype="multipart/form-data" method="POST"
+            class="chose-file">
+            {% csrf_token %}
+            <input class="photo-upload"type="file" name="photo-file">
+            <br><br>
+            <button type="submit" class="upload-btn">Upload Photo</button>
+        </form>
+        <form action="{% url 'furniture_delete' furniture_item.id %}">
+            <button type="submit" class="delete-btn">DELETE ITEM</button>
+        </form>
     </div>
 </div>
+
 
 {% endblock content %}
