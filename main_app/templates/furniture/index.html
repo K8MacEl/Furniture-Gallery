@@ -1,12 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1>Furniture Index</h1>
+<h3>{{ furniture.category }}</h3>
 
 {% for furniture_item in furniture  %}
   <div class="card">
     <a href="{% url 'detail' furniture_item.id %}">
+      <h3>{{ furniture_item.category }}</h3>
       <div class="card-content">
+        {% for photo in furniture_item.photo_set.all %}
+        <img style="width: 250px" class="responsive-img card-panel" src="{{photo.url}}">
+        {% empty %}
+        <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+        {% endfor %}
         <span class="card-title">{{ furniture_item.name }}</span>
         <p>Description: {{ furniture_item.description }}</p>
         <p>Price: $ {{ furniture_item.price }}</p>
