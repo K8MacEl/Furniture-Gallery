@@ -21,15 +21,15 @@
     <!-- {% if cart.quantity.count %} -->
     
     {% for item in cart.furniture_item.all %}
-    <div class="card">
-      <div class="card-content">
-        <span class="card-title">
+    <div class="shopping_cart">
+      <div class="cart-content">
+        <span class="cart-title">
         {{ item.name }}
         </span>
         <span>{{ item.quantity }} </span>
-        <form action="{% url 'disassoc_item' cart.id furniture_item.id %}" method="POST">
+        <form class="remove-form" action="{% url 'disassoc_item' cart.id furniture_item.id %}" method="POST">
           {% csrf_token %}
-          <button type="submit" class="btn">Remove</button>
+          <button type="submit" class="btn-remove">Remove</button>
         </form>
       </div>
     </div>
