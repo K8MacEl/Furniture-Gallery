@@ -56,17 +56,19 @@ def signup(request):
 
 #----WILL NEED TO ADD FILTER METHOD HERE----#
 def furniture_index(request):
-
-	# tell the model to find all the rows in the cats table!
-	# cats = Cat.objects.all()
-	# Only grab the logged in users cats
-	furniture = Furniture_Item.objects.all()
-	return render(request, 'furniture/index.html', {
-		'furniture': furniture
-		# 'cats' becomes a variable name in 'cats/index.html'
-		# just like express
-		# res.render('cats/index', {'cats': cats})
+	category = request.GET.get('category')
+	if category:
+		furniture = Furniture_Item.objects.filter(category=category)
+		return render(request, 'furniture/index.html', {
+			'furniture': furniture
+		})
+	else:
+		furniture = Furniture_Item.objects.all()
+		return render(request, 'furniture/index.html', {
+			'furniture': furniture
 	})
+
+
 	
 def furniture_detail(request, furniture_item_id):
 	furniture = Furniture_Item.objects.get(id=furniture_item_id)
