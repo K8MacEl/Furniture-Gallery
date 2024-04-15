@@ -24,11 +24,13 @@
         ><img src="https://i.imgur.com/nhLnyn2.png" width="230px"
       /></a>
       <ul>
+        {% if user.is_superuser %}
         <li>
           <a href="{% url 'furniture_create' %}"
             ><span>Add Furniture</span></a
           >
         </li>
+        {% endif %}
         {% if user.is_authenticated %}
         <li>
           <a href="{% url 'cart_list' %}">
