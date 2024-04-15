@@ -94,3 +94,41 @@ nav ul a {
     background-color: green;
     color: white
 }
+
+.header_card{
+    display: flex;
+}
+
+.branding_title{
+    margin-top: 3rem;
+    font-size: x-large;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    white-space: nowrap;
+}
+
+.header_image{
+    margin-top: 3rem;
+    width: 100%;
+    height: 100%;
+    border: 3px solid white
+}
+
+.slogan {
+    margin-top: 3rem;
+    width: 30rem;
+    font-size: medium;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    word-wrap: break-word;
+}
+.button_container {
+    margin-left: 3rem;
+}
+.btn-details {
+    background-color: rgb(127, 93, 39);
+    color: white;
+    height: 3rem;
+}
+
+
