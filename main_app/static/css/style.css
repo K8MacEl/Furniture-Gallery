@@ -222,3 +222,24 @@ form {
 .cart-content{
     background-color: pink;
 }
+
+.word_index{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+.index_price{
+    color: black;
+}
+
+#flex-container{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.card{
+    display: flex;
+}
