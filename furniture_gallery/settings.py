@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 import environ
 environ.Env()
@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-4wjeayqyjdv_d#5j1&l0r$bdokd2cg4&ncef*ug_@j(y=&1e06
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['furniture-gallery-1niy.onrender.com','localhost']
 
 
 # Application definition
@@ -139,6 +139,7 @@ if not DEBUG:
     # and renames the files with unique names for each version to support long-term caching
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+STATIC_ROOT="static"
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
