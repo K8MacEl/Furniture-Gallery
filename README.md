@@ -1,6 +1,13 @@
 <a href="https://imgur.com/I7QcQy6"><img src="https://i.imgur.com/I7QcQy6l.png?1" title="source: imgur.com" /></a>
 # Furniture-Gallery
 
+This is a team project showcasing the combined efforts of:
+
+* Kate McElhaney
+* JJ Ratzlaff
+* Dean Wright
+* Lily Zhao
+
 Furniture Gallery is an ECommerce site customized for a furniture market. This web based application allows users to view furniture, sort by items by category of sofa, table, chair, or beds. Then if the user would like to add their item to the cart they will be prompted to sign up or login, if they are an existing user. Their cart will show all items.
 
 
