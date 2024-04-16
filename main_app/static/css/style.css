@@ -106,12 +106,14 @@ nav ul a {
     width: 10rem;
     height: 3rem;
     margin-left: 3rem;
+    margin-bottom: 3rem;
 }
 .header_card{
     display: flex;
     -webkit-box-shadow: -6px 11px 15px -12px rgba(0,0,0,0.75);
     -moz-box-shadow: -6px 11px 15px -12px rgba(0,0,0,0.75);
-    box-shadow: -6px 11px 15px -12px rgba(0,0,0,0.75);;
+    box-shadow: -6px 11px 15px -12px rgba(0,0,0,0.75);
+    margin-bottom: 3rem;
 }
 
 .branding_title{
