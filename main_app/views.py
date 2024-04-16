@@ -138,7 +138,8 @@ class CartUpdate(UpdateView):
 	
 def cart_list(request):
 	cart = Cart.objects.get(user=request.user)
-	print('cart: ', cart)
+	
+	# total_price = sum(cart_items.furniture_item.price * cart_items.furniture_item.quantity for cart in cart_items)
 	return render(request, 'main_app/cart_list.html', {'cart': cart})
 
 def disassoc_item(request, cart_id, furniture_item_id):
