@@ -13,6 +13,9 @@
         <p>{{ item.name }}</p>
         <p>{{ item.description }}</p>
         <p>${{ item.price }}</p>
+        {% price_list = [] %}
+        {% price_list.append(item.price) %}
+        <p>{{price_list.sum()}}</p>
         <form action="{% url 'disassoc_item' cart.id item.id %}" method="POST">
           {% csrf_token %}
           <button type="submit" class="btn">Remove</button>
