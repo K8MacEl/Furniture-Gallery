@@ -13,6 +13,7 @@
         <p>{{ item.name }}</p>
         <p>{{ item.description }}</p>
         <p>${{ item.price }}</p>
+
         <p>quantity: {{ item.quantity }} </p>
         <form action="{% url 'disassoc_item' cart.id item.id %}" method="POST">
           {% csrf_token %}

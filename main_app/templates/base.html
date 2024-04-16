@@ -27,7 +27,7 @@
         {% if user.is_superuser %}
         <li>
           <a href="{% url 'furniture_create' %}"
-            ><span>Add Furniture</span></a
+            ><span>ADD FURNITURE</span></a
           >
         </li>
         {% endif %}
@@ -53,6 +53,13 @@
             <button type="submit" class="btn">login</button>
           </form>
         </li>
+        <li>
+          <form method="post" action="{% url 'signup' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn">signup</button>
+          </form>
+        </li>
+
 
         {% endif %}
       </ul>

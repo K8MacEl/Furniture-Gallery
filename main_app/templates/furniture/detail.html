@@ -18,11 +18,13 @@
         <h5><strong>Description</strong></h5> {{ furniture_item.description }}</p>
         <p><h6><strong>Category: </strong></h6> {{ furniture_item.category }}</p>
         <h5>${{ furniture_item.price }}</h5>
+        {% if user.is_authenticated %}
         <form action="{% url 'assoc_item' furniture_item.id %}" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             <button type="submit" class="cart-btn">Add To Cart</button>
         <br><br>
         </form>
+        {% endif %}
     </div>
 </div>
         {% if user.is_superuser %}
