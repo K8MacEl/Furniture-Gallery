@@ -13,6 +13,7 @@
         <p>{{ item.name }}</p>
         <p>{{ item.description }}</p>
         <p>${{ item.price }}</p>
+        <p>quantity: {{ item.quantity }} </p>
         <form action="{% url 'disassoc_item' cart.id item.id %}" method="POST">
           {% csrf_token %}
           <button type="submit" class="btn">Remove</button>
@@ -20,23 +21,11 @@
       {% endfor %}
     <!-- {% if cart.quantity.count %} -->
     
-    {% for item in cart.furniture_item.all %}
-    <div class="shopping_cart">
-      <div class="cart-content">
-        <span class="cart-title">
-        {{ item.name }}
-        </span>
-        <span>{{ item.quantity }} </span>
-        <form class="remove-form" action="{% url 'disassoc_item' cart.id furniture_item.id %}" method="POST">
-          {% csrf_token %}
-          <button type="submit" class="btn-remove">Remove</button>
-        </form>
-      </div>
-    </div>
-    {% endfor %}
+  
     <!-- {% else %}
     <h5>No items in cart</h5>
     {% endif %}   -->
+    <p>Total Price: {{ total_price }}</p>
   </div>
   <!-- Available toys will come after this line -->
     

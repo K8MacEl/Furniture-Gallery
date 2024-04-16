@@ -11,7 +11,7 @@ def create_cart(sender, request, user, **kwargs):
         print(cart, 'users cart')
     else:
 
-        Cart.objects.create(user=user, quantity=0)
+        Cart.objects.create(user=user)
         print("User logged in:", user.username)
 
 user_logged_in.connect(create_cart, sender=get_user_model())
