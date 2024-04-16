@@ -164,11 +164,11 @@ def assoc_item(request, furniture_item_id):
 	if cart:
 		print(cart, "this is cart")
 		cart.furniture_item.add(furniture_item_id)
-		if cart.quantity == None:
+		if cart.quantity == 0 or cart.quantity == None:
 			cart.quantity = 1
 			cart.save()
 			print(request, "Item added to your cart")
-		elif cart.quantity != None:
+		elif cart.quantity != None or cart.quantity != 0:
 			cart.quantity += 1
 			cart.save()
 			print(cart.quantity)
