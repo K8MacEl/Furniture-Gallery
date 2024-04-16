@@ -6,37 +6,39 @@
 <div class="carousel">
     
     {% for photo in furniture_item.photo_set.all %}
-    <a class="carousel-item"><img class="responsive-image" src="{{photo.url}}"></a>
+    <a class="carousel-item" style="width: 450px; height: 350px"><img  src="{{photo.url}}"></a>
     {% empty %}
-    <div class="card-panel teal-text center-align">No Photos Uploaded</div>
+    <div class="card-panel black-text center-align">No Photos Uploaded</div>
     {% endfor %}
 </div>
-<div class="detail-card">
+<div>
     <div class="card-content">
         <h3><strong><span>{{ furniture_item.name }}</span></strong></h3>
         <p>
         <h5><strong>Description</strong></h5> {{ furniture_item.description }}</p>
+        <p><h6><strong>Category: </strong></h6> {{ furniture_item.category }}</p>
         <h5>${{ furniture_item.price }}</h5>
         <form action="{% url 'assoc_item' furniture_item.id %}" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             <button type="submit" class="cart-btn">Add To Cart</button>
+        <br><br>
         </form>
-        <p><strong>Category</strong> {{ furniture_item.category }}</p>
+    </div>
+</div>
         {% if user.is_superuser %}
-        <form action="{% url 'add_photo' furniture_item.id %}" enctype="multipart/form-data" method="POST">
+        <form class="admin-btn-details" action="{% url 'add_photo' furniture_item.id %}" enctype="multipart/form-data" method="POST">
             {% csrf_token %}
             <div class="photo-upload-detail">
                 <input type="file" name="photo-file">
+                <br><br>
                 <button type="submit" class="upload-btn">Upload Photo</button>
             </div>
         </form>
 
-        <form action="{% url 'furniture_delete' furniture_item.id %}">
+        <form class="admin-btn-delete" action="{% url 'furniture_delete' furniture_item.id %}">
             <button type="submit" class="delete-btn">DELETE ITEM</button>
         </form>
         {% endif %}
-    </div>
-</div>
 
 <script>  document.addEventListener('DOMContentLoaded', function () {
         var elems = document.querySelectorAll('.carousel');

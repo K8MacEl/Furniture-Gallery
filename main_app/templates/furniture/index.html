@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h3>{{ furniture.category }}</h3>
-
-{% for furniture_item in furniture  %}
-  <div class="card">
+<section class="index-container">
+{% for furniture_item in furniture %}
+  <div class="index-card">
     <a href="{% url 'detail' furniture_item.id %}">
-      <h3>{{ furniture_item.category }}</h3>
-      <div class="card-content">
-        {% for photo in furniture_item.photo_set.all %}
-        <img style="width: 250px" class="responsive-img card-panel" src="{{photo.url}}">
-        {% empty %}
+      <div class="index-card-content">
+        {% if furniture_item.photo_set.all %}
+        <!-- Directly access the first photo only, no for loop -->
+        <img class="responsive-img card-panel" src="{{ furniture_item.photo_set.all.0.url }}">
+        {% else %}
         <div class="card-panel teal-text center-align">No Photos Uploaded</div>
-        {% endfor %}
+        {% endif %}
         <span class="card-title">{{ furniture_item.name }}</span>
         <p>Description: {{ furniture_item.description }}</p>
-        <p>Price: $ {{ furniture_item.price }}</p>
+        <p>Price: ${{ furniture_item.price }}</p>
         <p>Category: {{ furniture_item.category }}</p>
       </div>
     </a>
   </div>
+</section> 
 {% endfor %}
 
 {% endblock %}
+
 
