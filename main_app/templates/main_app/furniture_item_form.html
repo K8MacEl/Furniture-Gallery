@@ -6,28 +6,29 @@
 
 <!-- object exists if you editing, and its value is the instance from the model, so a cat, 
 	with same keys as your model -->
-{% if object %}
+<div class="add_furniture-form">
+	{% if object %}
 	<h1>Edit <span class="add_furniture">{{ object.name }}</span></h1>
-{% else %}	
+	{% else %}
 	<h1>Add Furniture</h1>
-{% endif %}
+	{% endif %}
 
-<!-- Leaving the action empty makes the form post to the same url used to display it -->
-<form action="" method="POST">
-	{% csrf_token %}
+	<!-- Leaving the action empty makes the form post to the same url used to display it -->
+	<form action="" method="POST">
+		{% csrf_token %}
 
-	<table>
-		<!-- the form variable comes from the CreateCat cbv (class based view) which is created from the model Cat -->
-		{{ form.as_p }}
-	</table>
-	<input type="submit" value="Submit!" class="submit_btn">
-</form>
-
+		<table>
+			<!-- the form variable comes from the CreateCat cbv (class based view) which is created from the model Cat -->
+			{{ form.as_p }}
+		</table>
+		<input type="submit" value="Submit!" class="submit_btn">
+	</form>
+</div>
 <script>
-	 const selectEl = document.querySelector('#id_category')
-  M.FormSelect.init(selectEl, {
-    classes: 'green darken-2-text'
-  })
+	const selectEl = document.querySelector('#id_category')
+	M.FormSelect.init(selectEl, {
+		classes: 'black-2-text'
+	})
 
 
 </script>

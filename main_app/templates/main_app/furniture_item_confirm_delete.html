@@ -1,7 +1,8 @@
+{% extends 'base.html' %}
 {% block content %}
   <h1>Delete Item</h1>
 
-  <h4>Are you sure you want to delete <span class="teal-text">{{ object.name }}</span>?</h4>
+  <h4>Are you sure you want to delete <span class="black-text">{{ object.name }}</span>?</h4>
 
   <!-- django has a method override built in, remember browser can only send
   get/post requsts from forms, django will handle changing it to a delete -->
