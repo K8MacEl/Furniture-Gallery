@@ -106,6 +106,7 @@ nav ul a {
     width: 10rem;
     height: 3rem;
     margin-left: 3rem;
+    margin-bottom: 3rem;
 }
 .header_card{
     display: flex;
