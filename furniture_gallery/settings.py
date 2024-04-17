@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'furniture_gallery.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'furniture_gallery',
+        'NAME': 'furngallery',
     }
 }
 db_from_env = dj_database_url.config(conn_max_age=500)
