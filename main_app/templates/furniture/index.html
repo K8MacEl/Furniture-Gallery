@@ -7,7 +7,7 @@
       <!-- Each item takes up 3 columns in a 12-column grid, creating 4 columns per row -->
       <div class="col s12 m6 l3">
         <a href="{% url 'detail' furniture_item.id %}">
-          <div style="height: 20rem" class="card-panel hoverable"> <!-- Added hoverable for better UX -->
+          <div style="height: 30rem" class="card-panel hoverable"> <!-- Added hoverable for better UX -->
             {% if furniture_item.photo_set.all %}
               <img class="responsive-img" src="{{ furniture_item.photo_set.all.0.url }}">
             {% else %}
