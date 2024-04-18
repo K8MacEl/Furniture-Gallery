@@ -3,47 +3,34 @@
 
 {% block content %}
 
-<h1>Carts</h1>
 
+<h3>Shopping Cart</h3>
 <hr>
-<div class="row">
-  <div class="col s6">
-    <h3>Shopping Cart</h3>
-      {% for item in cart.furniture_item.all %}
-        <p>{{ item.name }}</p>
-        <p>{{ item.description }}</p>
-        <p>${{ item.price }}</p>
+{% for item in cart.furniture_item.all %}
+<div class="cart-container">
+  <div class="cart-row" style="text-align: center; width: 20rem">
+    <div class="col s12 m6 l10">
+      <span class="card-title" style="font-weight: bold;">{{ item.name }}</span>
+      <p>Decription: {{ item.description }}</p>
+      <p>${{ item.price }}</p>
+      <p> Quantity: {{ item.quantity }} </p>
+      <form action="{% url 'disassoc_item' cart.id item.id %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="black-btn" style="background-color: black; color: white;">Remove</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endfor %}
+<!-- {% if cart.quantity.count %} -->
 
-        <p>quantity: {{ item.quantity }} </p>
-        <form action="{% url 'disassoc_item' cart.id item.id %}" method="POST">
-          {% csrf_token %}
-          <button type="submit" class="btn">Remove</button>
-        </form>
-      {% endfor %}
-    <!-- {% if cart.quantity.count %} -->
-    
-  
-    <!-- {% else %}
+
+<!-- {% else %}
     <h5>No items in cart</h5>
     {% endif %}   -->
-    <p>Total Price: {{ total_price }}</p>
-  </div>
-  <!-- Available toys will come after this line -->
-    
+<div class="total-card" style="width: 20rem; height: 2rem; color: white; background-color: green; padding-left: 1rem;">
+  <strong> Total Price:</strong> ${{ total_price }}</div>
+</div>
+<!-- Available toys will come after this line -->
+
 {% endblock %}
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

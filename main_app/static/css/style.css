@@ -281,5 +281,20 @@ form {
     text-align: center;
     
 }
+ /*--------------------- cart_list---------------- */
+ .cart-container {
+    background-color: lightgrey;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    width: 20rem;
+    border-radius: 5px;
+  
+ }
 
-
+ .total-card{
+    text-align: center;
+    border-radius: 4px;
+ }
