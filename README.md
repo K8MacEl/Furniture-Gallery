@@ -41,10 +41,10 @@ This web based application has full CRUD operations and uses the following techn
 
 
 
-## Getting Started:
+## How this Application Works on the User End:
 
 
-* Go to the <a href="https://furniture-gallery-1niy.onrender.com">  Deployment Link.</a>
+
 * Browse the furniture by general inventory or select a category.
 ### <a href="https://imgur.com/pWyDNoQ"><img src="https://i.imgur.com/pWyDNoQb.png" title="source: imgur.com" /></a>
 
